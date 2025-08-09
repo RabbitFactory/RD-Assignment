@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 
-export default function ReviewForm({ onAddReview }) {
+export default function ReviewForm({ handleAddReview }) {
 
     const [shopName, setShopName] = useState("");
     const [review, setReview] = useState("");
@@ -29,7 +29,7 @@ export default function ReviewForm({ onAddReview }) {
             date: new Date().toLocaleString(),
         };
 
-        onAddReview(newReview);
+        handleAddReview(newReview);
         setShopName("");
         setReview("");
         setRating(0);
