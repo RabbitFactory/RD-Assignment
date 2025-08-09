@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
 
 export default function ReviewForm({ onAddReview }) {
 
     const [shopName, setShopName] = useState("");
     const [review, setReview] = useState("");
+    const [rating, setRating] = useState(0);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,12 +25,14 @@ export default function ReviewForm({ onAddReview }) {
             id: Date.now(),
             shopName,
             review,
+            rating,
             date: new Date().toLocaleString(),
         };
 
         onAddReview(newReview);
         setShopName("");
         setReview("");
+        setRating(0);
     };
 
     return (
@@ -61,11 +66,16 @@ export default function ReviewForm({ onAddReview }) {
             </div>
 
             {/* Rating */}
-
+            <Rating
+                style={{ maxWidth: 180 }}
+                value={rating}
+                onChange={setRating}
+                isRequired
+            />
 
             <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4"
             >
                 Submit
             </button>
