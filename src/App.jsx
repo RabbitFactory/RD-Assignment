@@ -16,10 +16,14 @@ export default function App() {
     setReviews([review, ...reviews]);
   };
 
+  const handleDeleteReview = (id) => {
+    setReviews(reviews.filter((r) => r.id !== id));
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <ReviewForm handleAddReview={handleAddReview} />
-      <ReviewList reviews={reviews}></ReviewList>
+      <ReviewList reviews={reviews} handleDeleteReview={handleDeleteReview}></ReviewList>
     </div>
   );
 }

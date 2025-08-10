@@ -1,6 +1,6 @@
 import ReviewCard from "./ReviewCard";
 
-const ReviewList = ({ reviews }) => {
+const ReviewList = ({ reviews ,handleDeleteReview }) => {
   if (reviews.length === 0) {
     return <p className="text-center text-gray-500">No reviews yet.</p>;
   }
@@ -14,6 +14,7 @@ const ReviewList = ({ reviews }) => {
           review={review.review}
           rating={review.rating}
           date={review.date}
+          handleDeleteReview = {() => handleDeleteReview(review.id)}
         />
       ))}
     </div>
